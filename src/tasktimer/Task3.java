@@ -5,7 +5,6 @@ import static java.lang.System.out;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /**
  * Process all the words in a file (one word per line) using BufferedReader
@@ -16,18 +15,20 @@ import java.io.InputStreamReader;
  * When this method is rewritten as a Runnable, it can be a non-static attribute
  * of the runnable.
  * Display summary statistics and elapsed time.
+ * 
+ * @author Warisara Inprom
  */
-public class Task3 implements Runnable {
+public class Task3 extends BufferedReaderTask {
 	
 	/**
-	 * Attribute of class Task3
+	 * Attributes of class Task3.
 	 */
 	InputStream instream ;
     BufferedReader br ;
     IntCounter counter ;
     
     /**
-	 * Constructor of class Task3
+	 * Constructor of class Task3.
 	 */
 	public Task3(){
 		instream = Dictionary.getWordsAsStream();
@@ -36,17 +37,10 @@ public class Task3 implements Runnable {
 	}
 
 	/**
-	 * Run class Task3
+	 * Run class Task3.
 	 */
 	@Override
 	public void run() {
-		try {
-            br = new BufferedReader( new InputStreamReader(instream) );
-        } catch (Exception ex) {
-            out.println("Could not open dictionary: "+ex.getMessage());
-            return;
-        }
-   
         // This code uses Java's IntStream.average() method.
         // But there is no way to also get the count of items.
         // averageLength = br.lines().mapToInt( (word) -> word.length() )
@@ -62,7 +56,7 @@ public class Task3 implements Runnable {
 	}
 	
 	/**
-	 * Return description of task
+	 * Return description of task.
 	 */
 	public String toString(){
 		return "Starting task: read words using BufferedReader and Stream";

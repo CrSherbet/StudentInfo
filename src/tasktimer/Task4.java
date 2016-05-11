@@ -5,7 +5,6 @@ import static java.lang.System.out;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.util.concurrent.atomic.AtomicInteger;
 import java.util.concurrent.atomic.AtomicLong;
 import java.util.function.Consumer;
@@ -15,16 +14,18 @@ import java.util.function.Consumer;
  * and the lines() method which creates a Stream of Strings (one item per line).  
  * Then use the stream to compute summary statistics.
  * This is same as task3, except we use a Collector instead of Consumer.
+ * 
+ * @author Warisara Inprom
  */
-public class Task4 implements Runnable {
+public class Task4 extends BufferedReaderTask {
 	/**
-	 * Attribute of class Task4
+	 * Attributes of class Task4.
 	 */
 	BufferedReader br;
 	InputStream instream;
 
 	/**
-	 * Constructor of class Task4
+	 * Constructor of class Task4.
 	 */
 	public Task4() {
 		instream = Dictionary.getWordsAsStream();
@@ -32,17 +33,10 @@ public class Task4 implements Runnable {
 	}
 
 	/**
-	 * Run class Task4
+	 * Run class Task4.
 	 */
 	@Override
 	public void run() {
-		try {
-			br = new BufferedReader(new InputStreamReader(instream));
-		} catch (Exception ex) {
-			out.println("Could not open dictionary: " + ex.getMessage());
-			return;
-		}
-
 		// We want the Consumer to add to the count and total length,
 		// but a Lambda can only access local variables (from surrounding scope)
 		// if
@@ -73,7 +67,7 @@ public class Task4 implements Runnable {
 	}
 	
 	/**
-	 * Return description of task
+	 * Return description of task.
 	 */
 	public String toString(){
 		return "Starting task: read words using BufferedReader and Stream with Collector";

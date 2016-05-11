@@ -1,26 +1,24 @@
 package tasktimer;
 
-import static java.lang.System.out;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 
 /** 
  * Append all the words from the dictionary to a String.
  * This shows why you should be careful about using "string1"+"string2".
+ * @author Warisara Inprom
  */
 public class Task5 implements Runnable {
 	/**
-	 * Attribute of class Task5
+	 * Attributes of class Task5.
 	 */
 	static final int MAXCOUNT = 50_000;
 	InputStream instream;
 	BufferedReader br;
 
 	/**
-	 * Constructor of class Task5
+	 * Constructor of class Task5.
 	 */
 	public Task5() {
 		instream = Dictionary.getWordsAsStream();
@@ -28,18 +26,10 @@ public class Task5 implements Runnable {
 	}
 
 	/**
-	 * Run class Task5
+	 * Run class Task5.
 	 */
 	@Override
 	public void run() {
-
-		try {
-			br = new BufferedReader(new InputStreamReader(instream));
-		} catch (Exception ex) {
-			out.println("Could not open dictionary: " + ex.getMessage());
-			return;
-		}
-
 		String result = "";
 		String word = null;
 		int count = 0;
@@ -56,7 +46,7 @@ public class Task5 implements Runnable {
 	}
 
 	/**
-	 * Return description of task
+	 * Return description of task.
 	 */
 	public String toString() {
 		return "Starting task: append " + MAXCOUNT + " words to a String using +";

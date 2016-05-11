@@ -7,15 +7,17 @@ import java.util.Scanner;
 /**
  * Process all the words in a file using Scanner to read and parse input.
  * Display summary statistics and elapsed time.
+ * 
+ * @author Warisara Inprom
  */
 public class Task1 implements Runnable {
 	/**
-	 * Attribute of class Task1
+	 * Attribute of class Task1.
 	 */
 	Scanner in ;
 	
 	/**
-	 * Constructor of class Task1
+	 * Constructor of class Task1.
 	 */
 	public Task1(){
 		InputStream instream = Dictionary.getWordsAsStream();
@@ -23,7 +25,7 @@ public class Task1 implements Runnable {
 	}
 
 	/**
-	 * Run class Task1
+	 * Run class Task1.
 	 */
 	@Override
 	public void run() {
@@ -39,7 +41,7 @@ public class Task1 implements Runnable {
 	}
 	
 	/**
-	 * Return description of task
+	 * Return description of task.
 	 */
 	public String toString(){
 		return "Starting task: read words using Scanner and a while loop" ;

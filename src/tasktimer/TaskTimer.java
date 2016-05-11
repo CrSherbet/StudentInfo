@@ -6,7 +6,7 @@ import static java.lang.System.out;
  * Time how long it takes to perform some tasks
  * using different programming constructs.
  * 
- * TODO Improve this code by restructuring it to eliminate duplicate code.
+ * @author Warisara Inprom
  */
 public class TaskTimer
 {
